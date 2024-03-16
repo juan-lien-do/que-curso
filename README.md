@@ -1,8 +1,20 @@
-# React + Vite
+# Que curso?
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Que es "Que curso"?
+Que curso nace de la idea de que usualmente los estudiantes de ingeniería en sistemas en la UTN - FRC tienen dudas acerca de su estado académico en relación a las materias que pueden cursar o no pueden cursar, y si bien actualmente existe una solución vía tabla de correlatividades, dicha tabla es poco intuitiva y de dificil lectura, por eso decidimos crear "Que curso?", la cual, a través de una interfaz intuitiva y simple de entender para los estudiantes, estos pueden saber su estado académico en relación a sus materias con mucha mas facilidad.
 
-Currently, two official plugins are available:
+## Tecnologías Empleadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Cliente:** ReactJs, Bootstrap, HTML5, CSS3
+
+**Servidor:** No aplica
+
+## Desarrolladores
+
+- Juan Liendo
+- Bruno Virinni
+
+## Authors
+
+- [@juan-lien-do](https://github.com/juan-lien-do)
+- [@brun02k20](https://github.com/Brun02K20)
