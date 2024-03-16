@@ -1,9 +1,9 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { Button } from "react-bootstrap";
+import { Header } from "./components/Header.jsx";
 
 function App() {
-  return <Button>Hola</Button>;
+  return <Header></Header>;
 }
 
 export default App;
