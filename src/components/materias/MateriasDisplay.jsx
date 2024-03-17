@@ -24,81 +24,117 @@ export const MateriasDisplay = () => {
     });
   }, [datosMaterias]); // Ejecutar cuando los datos cambian
 
-  // preguntar si la materia se puede cursar o no
-  const preguntarPorMaterias = (id) => {
-    let currentMateria = datosMateriasRef.current.find((x) => x.id === id); // busco la materia segun el id
-    let idsMateriasReg = currentMateria.materiasQueNecesitaRegulares; // las materias que necesita regulares para cursar la materia encontrada
-    let idsMateriasApr = currentMateria.materiasQueNecesitaAprobadas; // las materias que necesita aprobadas para cursar la materia encontrada
+    const preguntarPorMaterias = (id) => {
+        let currentMateria = datosMateriasRef.current.find((x)=>x.id === id);
+        let idsMateriasReg = currentMateria.materiasQueNecesitaRegulares;
+        let idsMateriasApr = currentMateria.materiasQueNecesitaAprobadas;
+        
+        if (datosMateriasRef.current.filter((x) => idsMateriasReg
+            .filter((y) => y === x.id).length > 0 )
+            .filter((x) => x.estado < 2).length > 0) return false;
 
-    if (
-      datosMateriasRef.current
-        .filter((x) => idsMateriasReg.filter((y) => y === x.id).length > 0)
-        .filter((x) => x.estado < 2).length > 0
-    )
-      return false;
-    else if (
-      datosMateriasRef.current
-        .filter((x) => idsMateriasApr.filter((y) => y === x.id).length > 0)
-        .filter((x) => x.estado < 3).length > 0
-    )
-      return false;
-    else return true; // Esto significa que la materia se puede cursar.
-  };
+        else if(datosMateriasRef.current.filter((x) => idsMateriasApr
+            .filter((y) => y === x.id).length > 0 )
+            .filter((x) => x.estado < 3).length > 0) return false;
+            
+        else return true; // Esto significa que la materia se puede cursar.
+    }
 
-  // actualiza el estado de la materia
-  const updateEstadoMateria = (id) => {
-    setDatosMaterias((prevState) => {
-      return prevState.map((materia) => {
-        if (materia.id === id) {
-          console.log("materia a actualizar: ", materia);
-          console.log("nuevo estado: ", materia.estado + 1);
-          return {
-            ...materia,
-            estado: materia.estado < 3 ? materia.estado + 1 : 1,
-          };
+    // Estas dos funciones son una copia de updateEstadoMateria:
+    // Está modificada para ser utilizada en recursiones de muchos pasos y que
+    // sea un método "seguro": ejecutarse repetidas veces lleva al mismo output
+
+    const unlockMateria = (id) => {
+        setDatosMaterias(prevState => {
+            return prevState.map(materia => {
+                if (materia.id === id) {
+                    return {
+                        ...materia,
+                        estado: materia.estado < 3 ? 1 : 0
+                    };
+                }
+                return materia;
+            });
+        });
+    }
+
+    const lockMateria = (id) =>{
+        setDatosMaterias(prevState => {
+            return prevState.map(materia => {
+                if (materia.id === id) {
+                    return {
+                        ...materia,
+                        estado: 0
+                    };
+                }
+                return materia;
+            });
+        });
+    };
+
+    
+    // Solo se tiene que ejecutar una vez por cada vez que se toque un botón válido.
+    // Aumenta el estado de la materia en 1 o lo vuelve a 1 si es igual a tres.
+    const updateEstadoMateria = (id) => {
+        setDatosMaterias(prevState => {
+            return prevState.map(materia => {
+                if (materia.id === id) {
+                    return {
+                        ...materia,
+                        estado: materia.estado < 3 ? materia.estado + 1 : 1
+                    };
+                }
+                return materia;
+            });
+        });
+    };
+
+    // 
+    
+    const notificarMaterias = (id) => {
+        let currentMateria = datosMateriasRef.current.find((x)=>x.id === id);
+        let idsMateriasNotif = currentMateria.materiasQueActualiza;
+    
+        idsMateriasNotif.forEach(idMat => {
+            let materiaToUpdate = datosMateriasRef.current.find((x)=>x.id === idMat);
+            if(preguntarPorMaterias(idMat) && materiaToUpdate.estado === 0){
+                unlockMateria(idMat);
+            } else if(!preguntarPorMaterias(idMat) && materiaToUpdate.estado !== 0){
+                lockMateria(idMat);
+            }
+        });
+    }
+    
+    // Esta es la función que acciona el botón. Si el estado lo permite, entonces actualiza el estado
+    // a "se puede cursar", "regular" o "aprobada".
+    
+    const handleCambioEstado = (id) => {
+        if (datosMateriasRef.current.find((x) => x.id === id).estado !== 0) {
+            console.log("se puede cursar");
+            updateEstadoMateria(id);
+            // Notificar materias solo si el estado cambió
+            console.log(datosMateriasRef.current);
+        } else {
+            console.log("no se puede cursar");
+
         }
         return materia;
       });
     });
   };
 
-  // actualiza el estado de las materias correlativas a la materia pulsada
-  const notificarMaterias = (id) => {
-    let currentMateria = datosMateriasRef.current.find((x) => x.id === id);
-    let idsMateriasNotif = currentMateria.materiasQueActualiza; // materias, que si, cambia el estado de la materia pasada por id, su esado se debe actualizar
-
-    idsMateriasNotif.forEach((idMat) => {
-      let materiaToUpdate = datosMateriasRef.current.find(
-        (x) => x.id === idMat
-      );
-      if (preguntarPorMaterias(idMat) && materiaToUpdate.estado === 0) {
-        updateEstadoMateria(idMat);
-      }
-    });
-  };
-
-  // cambiar el estado de la materia si esta se puede cursar
-  const handleCambioEstado = (id) => {
-    if (preguntarPorMaterias(id)) {
-      // Notificar materias solo si el estado cambió
-      console.log("se puede cursar");
-      updateEstadoMateria(id);
-    } else {
-      console.log("no se puede cursar");
-    }
-    notificarMaterias(id);
-  };
-
-  const getStyle = (estado) => {
-    switch (estado) {
-      case 0: // no se puede cursar
-        return "rounded mx-1 my-1 px-2 py-2 col-lg-2 btn btn-dark text-white";
-      case 1: // se puede cursar
-        return "rounded mx-1 my-1 px-2 py-2 col-lg-2 btn btn-light";
-      case 2: // regular
-        return "rounded mx-1 my-1 px-2 py-2 col-lg-2 btn btn-secondary";
-      default: // aprobada
-        return "rounded mx-1 my-1 px-2 py-2 col-lg-2 btn btn-primary";
+    };
+    const getStyle = (estado) => {
+        switch (estado) {
+            case 0:
+                return "rounded mx-1 my-1 px-2 py-2 col-lg-2 btn btn-dark text-white";
+            case 1:
+                return "rounded mx-1 my-1 px-2 py-2 col-lg-2 btn btn-light";
+            case 2:
+                return "rounded mx-1 my-1 px-2 py-2 col-lg-2 btn btn-secondary";
+            default:
+                return "rounded mx-1 my-1 px-2 py-2 col-lg-2 btn btn-primary"; 
+        }
     }
   };
 
