@@ -59,11 +59,52 @@ export const MateriasDisplay = () => {
         let idsMateriasReg = currentMateria.materiasQueNecesitaRegulares;
         let idsMateriasApr = currentMateria.materiasQueNecesitaAprobadas;
         
-        if (datosMateriasRef.current.filter((x) => idsMateriasReg.filter((y) => y === x.id).length > 0 ).filter((x) => x.estado < 2).length > 0) return false;
-        else if(datosMateriasRef.current.filter((x) => idsMateriasApr.filter((y) => y === x.id).length > 0 ).filter((x) => x.estado < 3).length > 0) return false;
+        if (datosMateriasRef.current.filter((x) => idsMateriasReg
+            .filter((y) => y === x.id).length > 0 )
+            .filter((x) => x.estado < 2).length > 0) return false;
+
+        else if(datosMateriasRef.current.filter((x) => idsMateriasApr
+            .filter((y) => y === x.id).length > 0 )
+            .filter((x) => x.estado < 3).length > 0) return false;
+            
         else return true; // Esto significa que la materia se puede cursar.
     }
 
+    // Estas dos funciones son una copia de updateEstadoMateria:
+    // Está modificada para ser utilizada en recursiones de muchos pasos y que
+    // sea un método "seguro": ejecutarse repetidas veces lleva al mismo output
+
+    const unlockMateria = (id) => {
+        setDatosMaterias(prevState => {
+            return prevState.map(materia => {
+                if (materia.id === id) {
+                    return {
+                        ...materia,
+                        estado: materia.estado < 3 ? 1 : 0
+                    };
+                }
+                return materia;
+            });
+        });
+    }
+
+    const lockMateria = (id) =>{
+        setDatosMaterias(prevState => {
+            return prevState.map(materia => {
+                if (materia.id === id) {
+                    return {
+                        ...materia,
+                        estado: 0
+                    };
+                }
+                return materia;
+            });
+        });
+    };
+
+    
+    // Solo se tiene que ejecutar una vez por cada vez que se toque un botón válido.
+    // Aumenta el estado de la materia en 1 o lo vuelve a 1 si es igual a tres.
     const updateEstadoMateria = (id) => {
         setDatosMaterias(prevState => {
             return prevState.map(materia => {
@@ -77,6 +118,8 @@ export const MateriasDisplay = () => {
             });
         });
     };
+
+    // 
     
     const notificarMaterias = (id) => {
         let currentMateria = datosMateriasRef.current.find((x)=>x.id === id);
@@ -85,14 +128,18 @@ export const MateriasDisplay = () => {
         idsMateriasNotif.forEach(idMat => {
             let materiaToUpdate = datosMateriasRef.current.find((x)=>x.id === idMat);
             if(preguntarPorMaterias(idMat) && materiaToUpdate.estado === 0){
-                updateEstadoMateria(idMat);
+                unlockMateria(idMat);
+            } else if(!preguntarPorMaterias(idMat) && materiaToUpdate.estado !== 0){
+                lockMateria(idMat);
             }
         });
     }
     
+    // Esta es la función que acciona el botón. Si el estado lo permite, entonces actualiza el estado
+    // a "se puede cursar", "regular" o "aprobada".
     
     const handleCambioEstado = (id) => {
-        if (preguntarPorMaterias(id)) {
+        if (datosMateriasRef.current.find((x) => x.id === id).estado !== 0) {
             console.log("se puede cursar");
             updateEstadoMateria(id);
             // Notificar materias solo si el estado cambió
@@ -103,13 +150,6 @@ export const MateriasDisplay = () => {
         notificarMaterias(id);
 
     };
-    
-    useEffect(() => {
-        datosMateriasRef.current.forEach((x) => {
-            notificarMaterias(x.id);
-        });
-    }, [datosMaterias]); // Ejecutar cuando los datos cambian
-
     const getStyle = (estado) => {
         switch (estado) {
             case 0:
