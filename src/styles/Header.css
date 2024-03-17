@@ -1,0 +1,31 @@
+.nav-header {
+    background-color: #362A36;
+    padding-right: 8px;
+    margin-bottom: 8px;
+    box-shadow: 0 8px 16px 0 rgba(50,0,50,0.2);
+}
+
+.nav-footer {
+    background-color: #362A36;
+    padding-right: 8px;
+}
+
+.header-item {
+    margin: 4px;
+}
+
+.header-link {
+    color: white;
+}
+
+.header-link::after {
+    color: white;
+}
+
+.header-link::before {
+    color: white;
+}
+
+.header-link:hover {
+    color: #A9E5BB;
+}

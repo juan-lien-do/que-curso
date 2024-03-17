@@ -1,0 +1,27 @@
+.cards-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.card-container {
+    margin: 8px;
+}
+
+.card-figure {
+    width: 100%;
+    box-shadow: 0 8px 16px 0 rgba(50,0,50,0.5);
+    background-color: #865684;
+}
+
+@media (max-width: 680px) {
+    .cards-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 680px) {
+    /* .card-container {
+        width: 50%,
+    } */
+}
