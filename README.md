@@ -18,3 +18,5 @@ Que curso nace de la idea de que usualmente los estudiantes de ingeniería en si
 
 - [@juan-lien-do](https://github.com/juan-lien-do)
 - [@brun02k20](https://github.com/Brun02K20)
+
+Reseñas va a ser via carrusel
