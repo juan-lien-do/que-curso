@@ -1,0 +1,32 @@
+.responsive-container {
+    display: grid; 
+    grid-template-columns: 1fr 1fr;
+    gap: 20px
+}
+
+.home-header {
+    color: #990c4e;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.home-text {
+    padding: 8px; 
+    text-align: center;
+}
+
+.goToMateriasBtn {
+    margin-bottom: 60px;
+    background-color: #362A36;
+    border: none;
+}
+
+.goToMateriasBtn:hover {
+    background-color: #604B61;
+}
+
+@media (max-width: 680px) {
+    .responsive-container {
+        grid-template-columns: 1fr;
+    }
+}
