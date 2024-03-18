@@ -22,6 +22,19 @@
 background-color: #195321;
 }
 
+.colors-header {
+    color: #990c4e;
+    margin-left: 12px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.year-header {
+    color: #69113a;
+    font-size: x-large;
+    font-weight: 500;
+}
+
+
 .item {
     display: flex;
     /* Para que los elementos estén en línea */

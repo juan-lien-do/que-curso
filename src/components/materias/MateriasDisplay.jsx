@@ -133,6 +133,7 @@ export const MateriasDisplay = () => {
 
   return (
     <div>
+      <h1 className="colors-header">Colores</h1>
       <div class="item">
         <div class="square1"></div>
         <p className="a">No podés cursar</p>
@@ -150,7 +151,8 @@ export const MateriasDisplay = () => {
         <p className="a">Aprobaste :D</p>
       </div>
       <div className="container-fluid mb-5">
-        <hr /> Primero
+        <hr />
+        <p className="year-header">Primero</p>
         <div className="row">
           {datosMaterias.slice(0, 9).map((x, index) => (
             <button
@@ -166,7 +168,7 @@ export const MateriasDisplay = () => {
           ))}
         </div>
         <hr />
-        Segundo
+        <p className="year-header">Segundo</p>
         <div className="row">
           {datosMaterias.slice(9, 17).map((x, index) => (
             <button
@@ -182,7 +184,7 @@ export const MateriasDisplay = () => {
           ))}
         </div>
         <hr />
-        Tercero
+        <p className="year-header">Tercero</p>
         <div className="row">
           {datosMaterias.slice(17, 23).map((x, index) => (
             <button
@@ -198,7 +200,7 @@ export const MateriasDisplay = () => {
           ))}
         </div>
         <hr />
-        Tercero Electivas + Seminario
+        <p className="year-header">Tercero Electivas + Seminario</p>
         <div className="row">
           {datosMaterias.slice(36, 38).map((x, index) => (
             <button
@@ -214,7 +216,7 @@ export const MateriasDisplay = () => {
           ))}
         </div>
         <hr />
-        Cuarto
+        <p className="year-header">Cuarto</p>
         <div className="row">
           {datosMaterias.slice(23, 30).map((x, index) => (
             <button
@@ -230,7 +232,7 @@ export const MateriasDisplay = () => {
           ))}
         </div>
         <hr />
-        Cuarto Electivas
+        <p className="year-header">Cuarto Electivas</p>
         <div className="row">
           {datosMaterias.slice(38, 45).map((x, index) => (
             <button
@@ -246,7 +248,7 @@ export const MateriasDisplay = () => {
           ))}
         </div>
         <hr />
-        Quinto
+        <p className="year-header">Quinto</p>
         <div className="row">
           {datosMaterias.slice(30, 36).map((x, index) => (
             <button
@@ -262,7 +264,7 @@ export const MateriasDisplay = () => {
           ))}
         </div>
         <hr />
-        Quinto electivas
+        <p className="year-header">Quinto electivas</p>
         <div className="row">
           {datosMaterias.slice(45, 56).map((x, index) => (
             <button
