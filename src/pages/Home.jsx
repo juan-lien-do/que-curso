@@ -10,10 +10,10 @@ export const Home = () => {
   return (
     <>
       <div className="responsive-container">
-        <section style={{ textAlign: "left" }}>
+        <section className="section-container">
           <h1 className="home-header">Que curso?</h1>
           <p className="home-text">
-            <strong>Que curso</strong> nace de la idea de que usualmente los
+            <strong>"Que curso?"</strong> nace de la idea de que usualmente los
             estudiantes de ingeniería en sistemas en la UTN - FRC tienen dudas
             acerca de su estado académico en relación a las materias que pueden
             cursar o no pueden cursar, y si bien actualmente existe una solución
@@ -27,19 +27,18 @@ export const Home = () => {
             sus materias con mucha mas facilidad.
           </p>
         </section>
+        <div className="col-12 text-center">
+          <Button
+            className="goToMateriasBtn"
+            onClick={() => navigate("/materias/")}
+          >
+            Ver mis Materias
+            <i className="bi bi-arrow-right" style={{ marginLeft: "8px" }}></i>
+          </Button>
+        </div>
         <div style={{ width: "100%" }}>
           <Resenas />
         </div>
-      </div>
-      <br></br>
-      <div className="col-12 text-center">
-        <Button
-          className="goToMateriasBtn"
-          onClick={() => navigate("/materias/")}
-        >
-          Ver mis Materias
-          <i className="bi bi-arrow-right" style={{ marginLeft: "8px" }}></i>
-        </Button>
       </div>
     </>
   );
