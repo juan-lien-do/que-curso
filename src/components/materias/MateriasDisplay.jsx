@@ -129,7 +129,7 @@ export const MateriasDisplay = () => {
   return (
     <div>
       <div className="container-fluid mb-5">
-        <hr />
+        <hr /> Primero
         <div className="row">
           {datosMaterias.slice(0, 9).map((x, index) => (
             <button
@@ -144,7 +144,7 @@ export const MateriasDisplay = () => {
             </button>
           ))}
         </div>
-        <hr />
+        <hr />Segundo
         <div className="row">
           {datosMaterias.slice(9, 17).map((x, index) => (
             <button
@@ -159,7 +159,7 @@ export const MateriasDisplay = () => {
             </button>
           ))}
         </div>
-        <hr />
+        <hr />Tercero
         <div className="row">
           {datosMaterias.slice(17, 23).map((x, index) => (
             <button
@@ -174,7 +174,22 @@ export const MateriasDisplay = () => {
             </button>
           ))}
         </div>
-        <hr />
+        <hr />Tercero Electivas + Seminario
+        <div className="row">
+          {datosMaterias.slice(36, 38).map((x, index) => (
+            <button
+              disabled={false}
+              className={getStyle(x.estado)}
+              onClick={() => {
+                handleCambioEstado(x.id);
+              }}
+              key={`3ro-${index}`}
+            >
+              <h4>{x.nombre}</h4>
+            </button>
+          ))}
+        </div>
+        <hr />Cuarto
         <div className="row">
           {datosMaterias.slice(23, 30).map((x, index) => (
             <button
@@ -189,9 +204,39 @@ export const MateriasDisplay = () => {
             </button>
           ))}
         </div>
-        <hr />
+        <hr />Cuarto Electivas
+        <div className="row">
+          {datosMaterias.slice(38, 45).map((x, index) => (
+            <button
+              disabled={false}
+              className={getStyle(x.estado)}
+              onClick={() => {
+                handleCambioEstado(x.id);
+              }}
+              key={`4to-${index}`}
+            >
+              <h4>{x.nombre}</h4>
+            </button>
+          ))}
+        </div>
+        <hr />Quinto
         <div className="row">
           {datosMaterias.slice(30, 36).map((x, index) => (
+            <button
+              disabled={false}
+              className={getStyle(x.estado)}
+              onClick={() => {
+                handleCambioEstado(x.id);
+              }}
+              key={`5to-${index}`}
+            >
+              <h4>{x.nombre}</h4>
+            </button>
+          ))}
+        </div>
+        <hr />Quinto electivas
+        <div className="row">
+          {datosMaterias.slice(45, 56).map((x, index) => (
             <button
               disabled={false}
               className={getStyle(x.estado)}
