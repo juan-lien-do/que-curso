@@ -1,7 +1,8 @@
 .cards-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 8px;
+    margin-bottom: 64px;
 }
 
 .card-container {
@@ -15,6 +16,12 @@
 }
 
 @media (max-width: 680px) {
+    .cards-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
     .cards-container {
         grid-template-columns: 1fr;
     }

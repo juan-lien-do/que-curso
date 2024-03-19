@@ -4,7 +4,7 @@ import Resena from "./Resena";
 
 export const Resenas = () => {
   return (
-    <section>
+    <section style={{ marginBottom: "32px" }}>
       <h3
         style={{
           color: "#990c4e",

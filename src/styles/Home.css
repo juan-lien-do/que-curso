@@ -1,6 +1,12 @@
+.section-container {
+    text-align: left; 
+    max-width: 70%; 
+    margin: 0 auto
+}
+
 .responsive-container {
     display: grid; 
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 20px
 }
 
@@ -11,14 +17,14 @@
 }
 
 .home-text {
-    padding: 8px; 
+    padding: 4px; 
     text-align: center;
 }
 
 .goToMateriasBtn {
-    margin-bottom: 60px;
     background-color: #362A36;
     border: none;
+    font-size: x-large;
 }
 
 .goToMateriasBtn:hover {

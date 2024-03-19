@@ -1,13 +1,18 @@
 import { useState, useRef, useEffect } from "react";
 import { VIDatosMaterias } from "../../constants/constants";
+import "./MateriasDisplay.css";
 
 export const MateriasDisplay = () => {
-  const [datosMaterias, setDatosMaterias] = useState(VIDatosMaterias);
+  const [datosMaterias, setDatosMaterias] = useState(() => {
+    const datosPersistentes = window.localStorage.getItem("QueCursoMats");
+    return datosPersistentes ? JSON.parse(datosPersistentes) : VIDatosMaterias;
+  });
   const datosMateriasRef = useRef(datosMaterias);
 
-  // cada vez que cambie alguna materia, que cambie el ref y haga un log del nuevo ref
+  // Cada vez que cambie alguna materia, actualizar el ref y guardar en el Local Storage
   useEffect(() => {
     datosMateriasRef.current = datosMaterias;
+    window.localStorage.setItem("QueCursoMats", JSON.stringify(datosMaterias));
     console.log("materias updated: ", datosMateriasRef.current);
   }, [datosMaterias]);
 
@@ -30,15 +35,15 @@ export const MateriasDisplay = () => {
     let idsMateriasApr = currentMateria.materiasQueNecesitaAprobadas;
 
     if (
-      datosMateriasRef.current.filter((x) =>
-        idsMateriasReg.filter((y) => y === x.id).length > 0
-      ).filter((x) => x.estado < 2).length > 0
+      datosMateriasRef.current
+        .filter((x) => idsMateriasReg.filter((y) => y === x.id).length > 0)
+        .filter((x) => x.estado < 2).length > 0
     )
       return false;
     else if (
-      datosMateriasRef.current.filter((x) =>
-        idsMateriasApr.filter((y) => y === x.id).length > 0
-      ).filter((x) => x.estado < 3).length > 0
+      datosMateriasRef.current
+        .filter((x) => idsMateriasApr.filter((y) => y === x.id).length > 0)
+        .filter((x) => x.estado < 3).length > 0
     )
       return false;
     else return true; // Esto significa que la materia se puede cursar.
@@ -118,18 +123,36 @@ export const MateriasDisplay = () => {
       case 0:
         return "rounded mx-1 my-1 px-2 py-2 col-5 col-lg-2 btn btn-dark text-white";
       case 1:
-        return "rounded mx-1 my-1 px-2 py-2 col-5 col-lg-2 btn btn-light";
+        return "rounded mx-1 my-1 px-2 py-2 col-5 col-lg-2 btn cursar text-white";
       case 2:
-        return "rounded mx-1 my-1 px-2 py-2 col-5 col-lg-2 btn btn-secondary";
+        return "rounded mx-1 my-1 px-2 py-2 col-5 col-lg-2 btn regular text-white";
       default:
-        return "rounded mx-1 my-1 px-2 py-2 col-5 col-lg-2 btn btn-primary";
+        return "rounded mx-1 my-1 px-2 py-2 col-5 col-lg-2 btn aprobar text-white";
     }
   };
 
   return (
     <div>
+      <h1 className="colors-header">Colores</h1>
+      <div class="item">
+        <div class="square1"></div>
+        <p className="a">No podés cursar</p>
+      </div>
+      <div class="item">
+        <div class="square2"></div>
+        <p className="a">Podés cursar</p>
+      </div>
+      <div class="item">
+        <div class="square3"></div>
+        <p className="a">Estás regular</p>
+      </div>
+      <div class="item">
+        <div class="square4"></div>
+        <p className="a">Aprobaste :D</p>
+      </div>
       <div className="container-fluid mb-5">
         <hr />
+        <p className="year-header">Primero</p>
         <div className="row">
           {datosMaterias.slice(0, 9).map((x, index) => (
             <button
@@ -145,6 +168,7 @@ export const MateriasDisplay = () => {
           ))}
         </div>
         <hr />
+        <p className="year-header">Segundo</p>
         <div className="row">
           {datosMaterias.slice(9, 17).map((x, index) => (
             <button
@@ -160,6 +184,7 @@ export const MateriasDisplay = () => {
           ))}
         </div>
         <hr />
+        <p className="year-header">Tercero</p>
         <div className="row">
           {datosMaterias.slice(17, 23).map((x, index) => (
             <button
@@ -175,6 +200,23 @@ export const MateriasDisplay = () => {
           ))}
         </div>
         <hr />
+        <p className="year-header">Tercero Electivas + Seminario</p>
+        <div className="row">
+          {datosMaterias.slice(36, 38).map((x, index) => (
+            <button
+              disabled={false}
+              className={getStyle(x.estado)}
+              onClick={() => {
+                handleCambioEstado(x.id);
+              }}
+              key={`3ro-${index}`}
+            >
+              <h4>{x.nombre}</h4>
+            </button>
+          ))}
+        </div>
+        <hr />
+        <p className="year-header">Cuarto</p>
         <div className="row">
           {datosMaterias.slice(23, 30).map((x, index) => (
             <button
@@ -190,8 +232,41 @@ export const MateriasDisplay = () => {
           ))}
         </div>
         <hr />
+        <p className="year-header">Cuarto Electivas</p>
+        <div className="row">
+          {datosMaterias.slice(38, 45).map((x, index) => (
+            <button
+              disabled={false}
+              className={getStyle(x.estado)}
+              onClick={() => {
+                handleCambioEstado(x.id);
+              }}
+              key={`4to-${index}`}
+            >
+              <h4>{x.nombre}</h4>
+            </button>
+          ))}
+        </div>
+        <hr />
+        <p className="year-header">Quinto</p>
         <div className="row">
           {datosMaterias.slice(30, 36).map((x, index) => (
+            <button
+              disabled={false}
+              className={getStyle(x.estado)}
+              onClick={() => {
+                handleCambioEstado(x.id);
+              }}
+              key={`5to-${index}`}
+            >
+              <h4>{x.nombre}</h4>
+            </button>
+          ))}
+        </div>
+        <hr />
+        <p className="year-header">Quinto electivas</p>
+        <div className="row">
+          {datosMaterias.slice(45, 56).map((x, index) => (
             <button
               disabled={false}
               className={getStyle(x.estado)}

@@ -1,0 +1,85 @@
+.cursar {
+    background-color: #C750DA;
+}
+
+.cursar:hover {
+    background-color: #ac42bd;
+}
+
+.regular {
+    background-color: #682ACD;
+}
+
+.regular:hover {
+    background-color: #6e43b4;
+}
+
+.aprobar {
+    background-color: #137621;
+}
+
+.aprobar:hover {
+background-color: #195321;
+}
+
+.colors-header {
+    color: #990c4e;
+    margin-left: 12px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.year-header {
+    color: #69113a;
+    font-size: x-large;
+    font-weight: 500;
+}
+
+
+.item {
+    display: flex;
+    /* Para que los elementos estén en línea */
+    align-items: center;
+    /* Para centrar verticalmente los elementos */
+    margin-bottom: 12px;
+    /* Espacio entre elementos, ajusta según necesites */
+}
+
+.square1 {
+    width: 24px;
+    height: 24px;
+    background-color: black;
+    margin-right: 12px;
+    margin-left: 12px;
+    /* Espacio entre el cuadrado y el texto, ajusta según necesites */
+}
+
+.square2 {
+    width: 24px;
+    height: 24px;
+    background-color: #C750DA;
+    margin-right: 12px;
+    margin-left: 12px;
+    /* Espacio entre el cuadrado y el texto, ajusta según necesites */
+}
+
+.square3 {
+    width: 24px;
+    height: 24px;
+    background-color: #682ACD;
+    margin-right: 12px;
+    margin-left: 12px;
+    /* Espacio entre el cuadrado y el texto, ajusta según necesites */
+}
+
+.square4 {
+    width: 24px;
+    height: 24px;
+    background-color: #137621;
+    margin-right: 12px;
+    margin-left: 12px;
+    /* Espacio entre el cuadrado y el texto, ajusta según necesites */
+}
+
+.a {
+    margin-bottom: 0px;
+}
