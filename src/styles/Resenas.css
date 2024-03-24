@@ -7,12 +7,28 @@
 
 .card-container {
     margin: 8px;
+    position: relative;
 }
 
 .card-figure {
     width: 100%;
     box-shadow: 0 8px 16px 0 rgba(50,0,50,0.5);
     background-color: #865684;
+    position: relative;
+}
+
+.svg-container {
+    position: absolute;
+    /* Establece la posición absoluta para el contenedor del SVG */
+    top: 4px;
+    /* Ajusta el margen superior */
+    right: 4px;
+    /* Ajusta el margen derecho */
+}
+
+.custom-svg {
+    fill: white;
+    /* Cambia el color de relleno según sea necesario */
 }
 
 @media (max-width: 680px) {
