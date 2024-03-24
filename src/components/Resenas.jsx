@@ -18,11 +18,15 @@ export const Resenas = () => {
       <div className="cards-container">
         <Resena
           title="Bruno"
-          description="Es muy útil para cuando tengo dudas sobre mis materias, mucho mejor que la tabla. "
+          description="Es muy útil para cuando tengo dudas sobre las materias que puedo cursar o no, mucho mejor que la tabla. "
         />
         <Resena
-          title="Andres"
-          description="La verdad, mi hermana está mas buena que esta app. "
+          title="Federico"
+          description="Epa, esta piola, esta piola pa. "
+        />
+        <Resena
+          title="Martín"
+          description="Está buena la sección de material porque tiene un montón de cosas para estudiar. "
         />
       </div>
     </section>
