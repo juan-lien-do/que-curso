@@ -13,6 +13,11 @@ export const Header = () => {
         </Nav.Link>
       </Nav.Item>
       <Nav.Item className="header-item">
+        <Nav.Link className="header-link" onClick={() => navigate("/material")}>
+          Material
+        </Nav.Link>
+      </Nav.Item>
+      <Nav.Item className="header-item">
         <Nav.Link className="header-link" onClick={() => navigate("/faq")}>
           FAQ
         </Nav.Link>

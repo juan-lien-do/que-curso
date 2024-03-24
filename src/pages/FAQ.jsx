@@ -2,7 +2,7 @@ import React from "react";
 import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
-import { FAQItem } from "./FAQItem";
+import { FAQItem } from "../components/FAQItem";
 import "../styles/FAQ.css";
 
 export const FAQ = () => {
@@ -10,7 +10,7 @@ export const FAQ = () => {
 
   return (
     <>
-      <h2
+      <h1
         style={{
           color: "#990c4e",
           textAlign: "center",
@@ -19,7 +19,7 @@ export const FAQ = () => {
         }}
       >
         Preguntas Frecuentes
-      </h2>
+      </h1>
       <div className="col-12 text-center">
         <Accordion style={{ width: "70%", margin: "auto", padding: "12px" }}>
           <FAQItem
