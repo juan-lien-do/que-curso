@@ -19,14 +19,17 @@ export const Resenas = () => {
         <Resena
           title="Bruno"
           description="Es muy útil para cuando tengo dudas sobre las materias que puedo cursar o no, mucho mejor que la tabla. "
+          stars={5}
         />
         <Resena
           title="Federico"
           description="Epa, esta piola, esta piola pa. "
+          stars={4}
         />
         <Resena
           title="Martín"
           description="Está buena la sección de material porque tiene un montón de cosas para estudiar. "
+          stars={5}
         />
       </div>
     </section>
