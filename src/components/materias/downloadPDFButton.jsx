@@ -24,7 +24,7 @@ const DownloadPDFButton = () => {
     <div className="col-12 text-center">
       <button
         onClick={downloadPDF}
-        className="btn mx-auto fw-bold download-btn"
+        className="btn mx-auto download-btn"
       >
         Descargar materias en PDF
       </button>

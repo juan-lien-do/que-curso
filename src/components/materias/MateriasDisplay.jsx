@@ -122,13 +122,13 @@ export const MateriasDisplay = () => {
   const getStyle = (estado) => {
     switch (estado) {
       case 0:
-        return "rounded mx-1 my-1 px-2 py-2 col-5 col-lg-2 btn btn-dark text-white";
+        return "rounded mx-1 my-1 px-2 py-2 col-5 col-lg-2 btn btn-dark";
       case 1:
-        return "rounded mx-1 my-1 px-2 py-2 col-5 col-lg-2 btn cursar text-white";
+        return "rounded mx-1 my-1 px-2 py-2 col-5 col-lg-2 btn cursar";
       case 2:
-        return "rounded mx-1 my-1 px-2 py-2 col-5 col-lg-2 btn regular text-white";
+        return "rounded mx-1 my-1 px-2 py-2 col-5 col-lg-2 btn regular";
       default:
-        return "rounded mx-1 my-1 px-2 py-2 col-5 col-lg-2 btn aprobar text-white";
+        return "rounded mx-1 my-1 px-2 py-2 col-5 col-lg-2 btn aprobar";
     }
   };
 
