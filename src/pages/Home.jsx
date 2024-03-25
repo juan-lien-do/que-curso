@@ -11,7 +11,6 @@ export const Home = () => {
     <>
       <div className="responsive-container" >
         <section className="section-container" >
-          
           <h1 className="home-header" >Que curso?</h1>
           <p className="home-text">
             <strong>"Que curso?"</strong> surge de la necesidad de simplificar
@@ -23,7 +22,7 @@ export const Home = () => {
           <p className="home-text">
             Por eso decidimos crear <strong>"Que curso?"</strong>, la cual, a
             través de una interfaz intuitiva y simple de entender para los
-            estudiantes, estos pueden saber su estado académico en relación a
+            estudiantes, estos pueden saber a qué materias anotarse en base a
             sus materias con mucha mas facilidad.
           </p>
         </section>
