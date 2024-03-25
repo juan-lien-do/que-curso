@@ -7,7 +7,7 @@ export default function Resena({ title, description, stars }) {
 
   return (
     <div className="card-container">
-      <Card className="card-figure">
+      <Card className="card-figure my-2 h-100 ">
         <Card.Body>
           <Card.Title style={{ color: "#FE7B7C", fontWeight: "bold" }}>
             {title}
