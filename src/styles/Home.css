@@ -22,13 +22,15 @@
 }
 
 .goToMateriasBtn {
-    background-color: #362A36;
+    background-color: #86BBD8;
     border: none;
     font-size: x-large;
+    color: black;
 }
 
 .goToMateriasBtn:hover {
-    background-color: #604B61;
+    background-color: #B9D8E9;
+    color: black;
 }
 
 @media (max-width: 680px) {

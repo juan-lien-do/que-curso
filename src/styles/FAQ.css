@@ -1,9 +1,11 @@
 .backFAQ {
     margin-bottom: 60px;
-    background-color: #362A36;
+    background-color: #86BBD8;
     border: none;
+    color: black;
 }
 
 .backFAQ:hover {
-    background-color: #604B61;
+    background-color: #B9D8E9;
+    color: black;
 }
