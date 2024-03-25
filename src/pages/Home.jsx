@@ -9,16 +9,16 @@ export const Home = () => {
 
   return (
     <>
-      <div className="responsive-container">
-        <section className="section-container">
-          <h1 className="home-header">Que curso?</h1>
+      <div className="responsive-container" >
+        <section className="section-container" >
+          
+          <h1 className="home-header" >Que curso?</h1>
           <p className="home-text">
-            <strong>"Que curso?"</strong> nace de la idea de que usualmente los
-            estudiantes de ingeniería en sistemas en la UTN - FRC tienen dudas
-            acerca de su estado académico en relación a las materias que pueden
-            cursar o no pueden cursar, y si bien actualmente existe una solución
-            vía tabla de correlatividades, dicha tabla es poco intuitiva y de
-            dificil lectura.
+            <strong>"Que curso?"</strong> surge de la necesidad de simplificar
+             la consulta del estado académico de los estudiantes de ingeniería
+              en sistemas en la UTN - FRC respecto a las materias que pueden
+               cursar. Actualmente, esta información se encuentra en una tabla
+                de correlatividades que resulta poco intuitiva y difícil de leer.
           </p>
           <p className="home-text">
             Por eso decidimos crear <strong>"Que curso?"</strong>, la cual, a
@@ -27,7 +27,7 @@ export const Home = () => {
             sus materias con mucha mas facilidad.
           </p>
         </section>
-        <div className="col-12 text-center">
+        <div className="col-12 text-center ">
           <Button
             className="goToMateriasBtn"
             onClick={() => navigate("/materias/")}
@@ -36,7 +36,7 @@ export const Home = () => {
             <i className="bi bi-arrow-right" style={{ marginLeft: "8px" }}></i>
           </Button>
         </div>
-        <div style={{ width: "100%" }}>
+        <div className="w-75 mx-auto mt-5">
           <Resenas />
         </div>
       </div>
