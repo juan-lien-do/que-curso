@@ -9,15 +9,15 @@ export const Home = () => {
 
   return (
     <>
-      <div className="responsive-container" >
-        <section className="section-container" >
-          <h1 className="home-header" >Que curso?</h1>
+      <div className="responsive-container">
+        <section className="section-container">
+          <h1 className="home-header">Que curso?</h1>
           <p className="home-text">
             <strong>"Que curso?"</strong> surge de la necesidad de simplificar
-             la consulta del estado académico de los estudiantes de ingeniería
-              en sistemas en la UTN - FRC respecto a las materias que pueden
-               cursar. Actualmente, esta información se encuentra en una tabla
-                de correlatividades que resulta poco intuitiva y difícil de leer.
+            la consulta del estado académico de los estudiantes de ingeniería en
+            sistemas en la UTN - FRC respecto a las materias que pueden cursar.
+            Actualmente, esta información se encuentra en una tabla de
+            correlatividades que resulta poco intuitiva y difícil de leer.
           </p>
           <p className="home-text">
             Por eso decidimos crear <strong>"Que curso?"</strong>, la cual, a
