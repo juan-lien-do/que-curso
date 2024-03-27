@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { VIDatosMaterias } from "../../constants/constants";
 import DownloadPDFButton from "./downloadPDFButton";
 import "./MateriasDisplay.css";
@@ -9,6 +10,7 @@ export const MateriasDisplay = () => {
     return datosPersistentes ? JSON.parse(datosPersistentes) : VIDatosMaterias;
   });
   const datosMateriasRef = useRef(datosMaterias);
+  const navigate = useNavigate();
 
   // Cada vez que cambie alguna materia, actualizar el ref y guardar en el Local Storage
   useEffect(() => {
@@ -51,21 +53,20 @@ export const MateriasDisplay = () => {
   };
 
   // Esta funcion devuelve un rango de numeros
-  function rango(start, stop)
-{
-     //Esta parte del código hace que los limites superior e inferior sean iguales a los del .slice
+  function rango(start, stop) {
+    //Esta parte del código hace que los limites superior e inferior sean iguales a los del .slice
     stop--;
     var array = [];
 
-    var length = stop - start; 
+    var length = stop - start;
 
-    for (var i = 0; i <= length; i++) { 
-        array[i] = start;
-        start++;
+    for (var i = 0; i <= length; i++) {
+      array[i] = start;
+      start++;
     }
 
     return array;
-}
+  }
 
   const actualizarAnio = (arr) => {
     // Si hay uno que este mas adelantado que el resto, entonces va a intentar
@@ -76,38 +77,36 @@ export const MateriasDisplay = () => {
     let maxValor = 0;
     for (let index = 0; index < arr.length; index++) {
       const element = datosMateriasRef.current[arr[index]].estado;
-      if (element > maxValor){
+      if (element > maxValor) {
         maxValor = element;
       }
     }
     // Si es 0 entonces no hacer nada
     if (maxValor === 0) return;
-    
+
     // Equiparar el valor más alto al resto de valores
     let flagSonIguales = true;
     for (let index = 0; index < arr.length; index++) {
       const element = datosMateriasRef.current[arr[index]].estado;
-      if( element !== 0 && element < maxValor){
+      if (element !== 0 && element < maxValor) {
         flagSonIguales = false;
         break;
       }
     }
 
-    console.log(flagSonIguales)
-    if (flagSonIguales){
+    console.log(flagSonIguales);
+    if (flagSonIguales) {
       for (let index = 0; index < arr.length; index++) {
         handleCambioEstado(datosMateriasRef.current[arr[index]].id);
-      }  
-    }
-    else{
+      }
+    } else {
       for (let index = 0; index < arr.length; index++) {
         const element = datosMateriasRef.current[arr[index]].estado;
-        if(element < maxValor)
+        if (element < maxValor)
           handleCambioEstado(datosMateriasRef.current[arr[index]].id);
-      } 
+      }
     }
-    
-  }
+  };
 
   const unlockMateria = (id) => {
     setDatosMaterias((prevState) => {
@@ -168,7 +167,7 @@ export const MateriasDisplay = () => {
   };
 
   const handleCambioEstado = (id) => {
-    console.log(id)
+    console.log(id);
     if (datosMateriasRef.current.find((x) => x.id === id).estado !== 0) {
       console.log("se puede cursar");
       updateEstadoMateria(id);
@@ -192,8 +191,14 @@ export const MateriasDisplay = () => {
     }
   };
 
+  const deleteLocalStorageItem = () => {
+    window.localStorage.removeItem("QueCursoMats");
+    setDatosMaterias(VIDatosMaterias);
+    navigate("/");
+  };
+
   return (
-    <div >
+    <div>
       <div id="descargable">
         <h1 className="colors-header">Colores</h1>
         <div class="item">
@@ -214,8 +219,14 @@ export const MateriasDisplay = () => {
         </div>
         <div className="container-fluid mb-5">
           <hr />
-          <p className="year-header">Primero 
-            <button  className="text-decoration-underline fw-bold btn" onClick={()=>{actualizarAnio(rango(0,9))}}>
+          <p className="year-header">
+            Primero
+            <button
+              className="text-decoration-underline fw-bold btn"
+              onClick={() => {
+                actualizarAnio(rango(0, 9));
+              }}
+            >
               {"("}Actualizar todo primero{")"}
             </button>
           </p>
@@ -234,8 +245,14 @@ export const MateriasDisplay = () => {
             ))}
           </div>
           <hr />
-          <p className="year-header">Segundo
-            <button  className="text-decoration-underline fw-bold btn" onClick={()=>{actualizarAnio(rango(9, 17))}}>
+          <p className="year-header">
+            Segundo
+            <button
+              className="text-decoration-underline fw-bold btn"
+              onClick={() => {
+                actualizarAnio(rango(9, 17));
+              }}
+            >
               {"("}Actualizar todo segundo{")"}
             </button>
           </p>
@@ -254,8 +271,14 @@ export const MateriasDisplay = () => {
             ))}
           </div>
           <hr />
-          <p className="year-header">Tercero
-            <button  className="text-decoration-underline fw-bold btn" onClick={()=>{actualizarAnio(rango(17, 23))}}>
+          <p className="year-header">
+            Tercero
+            <button
+              className="text-decoration-underline fw-bold btn"
+              onClick={() => {
+                actualizarAnio(rango(17, 23));
+              }}
+            >
               {"("}Actualizar todo tercero{")"}
             </button>
           </p>
@@ -290,10 +313,17 @@ export const MateriasDisplay = () => {
             ))}
           </div>
           <hr />
-          <p className="year-header">Cuarto
-            <button  className="text-decoration-underline fw-bold btn" onClick={()=>{actualizarAnio(rango(23, 30))}}>
+          <p className="year-header">
+            Cuarto
+            <button
+              className="text-decoration-underline fw-bold btn"
+              onClick={() => {
+                actualizarAnio(rango(23, 30));
+              }}
+            >
               {"("}Actualizar todo cuarto{")"}
-            </button></p>
+            </button>
+          </p>
           <div className="row">
             {datosMaterias.slice(23, 30).map((x, index) => (
               <button
@@ -325,8 +355,14 @@ export const MateriasDisplay = () => {
             ))}
           </div>
           <hr />
-          <p className="year-header">Quinto
-            <button  className="text-decoration-underline fw-bold btn" onClick={()=>{actualizarAnio(rango(30, 36))}}>
+          <p className="year-header">
+            Quinto
+            <button
+              className="text-decoration-underline fw-bold btn"
+              onClick={() => {
+                actualizarAnio(rango(30, 36));
+              }}
+            >
               {"("}Actualizar todo quinto{")"}
             </button>
           </p>
@@ -363,8 +399,18 @@ export const MateriasDisplay = () => {
           <hr />
         </div>
       </div>
-      <div className="mx-auto mt-2" style={{marginBottom:"100px"}}>
-              <DownloadPDFButton></DownloadPDFButton>
+      <div className="mx-auto mt-2" style={{ marginBottom: "20px" }}>
+        <div className="col-12 text-center">
+          <button
+            onClick={() => deleteLocalStorageItem()}
+            className="download-btn btn mx-auto"
+          >
+            Corregir
+          </button>
+        </div>
+      </div>
+      <div className="mx-auto mt-2" style={{ marginBottom: "100px" }}>
+        <DownloadPDFButton></DownloadPDFButton>
       </div>
     </div>
   );
