@@ -294,7 +294,7 @@ export const VIDatosMaterias = [
         estado: 0,
         materiasQueActualiza: [],
         materiasQueNecesitaRegulares: [16],
-        materiasQueNecesitaAprobadas: [6,8,13,14],
+        materiasQueNecesitaAprobadas: [6, 8, 13, 14],
     },
     {
         id: 50,
