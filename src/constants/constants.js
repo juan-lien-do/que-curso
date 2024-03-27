@@ -4,7 +4,7 @@ export const VIDatosMaterias = [
         id: 1,
         nombre: "AM1",
         estado: 1,
-        materiasQueActualiza: [9, 10, 17, 19, 22],
+        materiasQueActualiza: [9, 10, 17, 19, 22, 18],
         materiasQueNecesitaRegulares: [],
         materiasQueNecesitaAprobadas: [],
     },
@@ -12,7 +12,7 @@ export const VIDatosMaterias = [
         id: 2,
         nombre: "AGA",
         estado: 1,
-        materiasQueActualiza: [9, 17, 19, 22],
+        materiasQueActualiza: [9, 17, 19, 22, 18],
         materiasQueNecesitaRegulares: [],
         materiasQueNecesitaAprobadas: [],
     },
@@ -142,13 +142,13 @@ export const VIDatosMaterias = [
         estado: 1,
         materiasQueActualiza: [30, 33, 34],
         materiasQueNecesitaRegulares: [],
-        materiasQueNecesitaAprobadas: [],
+        materiasQueNecesitaAprobadas: [1, 2],
     },
     {
         id: 19,
-        nombre: "BDD",
+        nombre: "BDA/GDA",
         estado: 0,
-        materiasQueActualiza: [25, 32],
+        materiasQueActualiza: [25, 32, 51, 52, 53, 54, 56, 57, 58, 63, 64, 65, 66, 67, 68],
         materiasQueNecesitaRegulares: [13, 16],
         materiasQueNecesitaAprobadas: [1, 2],
     },
@@ -298,9 +298,9 @@ export const VIDatosMaterias = [
     },
     {
         id: 50,
-        nombre: "BDA",
+        nombre: "BACK",
         estado: 0,
-        materiasQueActualiza: [51, 52, 53, 54, 56, 57, 58, 63, 64, 65, 66, 67, 68],
+        materiasQueActualiza: [],
         materiasQueNecesitaRegulares: [13, 14],
         materiasQueNecesitaAprobadas: [6],
     },// cuarto año
@@ -309,7 +309,7 @@ export const VIDatosMaterias = [
         nombre: "Green Software",
         estado: 0,
         materiasQueActualiza: [],
-        materiasQueNecesitaRegulares: [20, 50],
+        materiasQueNecesitaRegulares: [20, 19],
         materiasQueNecesitaAprobadas: [13, 14],
     },
     {
@@ -317,7 +317,7 @@ export const VIDatosMaterias = [
         nombre: "Gestion Ind. de la Prod.",
         estado: 0,
         materiasQueActualiza: [],
-        materiasQueNecesitaRegulares: [50],
+        materiasQueNecesitaRegulares: [19],
         materiasQueNecesitaAprobadas: [8, 16],
     },
     {
@@ -325,7 +325,7 @@ export const VIDatosMaterias = [
         nombre: "Gestion Mejora Proc.",
         estado: 0,
         materiasQueActualiza: [],
-        materiasQueNecesitaRegulares: [50],
+        materiasQueNecesitaRegulares: [19],
         materiasQueNecesitaAprobadas: [8, 16],
     },
     {
@@ -333,7 +333,7 @@ export const VIDatosMaterias = [
         nombre: "DevOps",
         estado: 0,
         materiasQueActualiza: [],
-        materiasQueNecesitaRegulares: [20, 50],
+        materiasQueNecesitaRegulares: [20, 19],
         materiasQueNecesitaAprobadas: [13, 14],
     },
     {
@@ -349,7 +349,7 @@ export const VIDatosMaterias = [
         nombre: "Com. Multimedial",
         estado: 0,
         materiasQueActualiza: [],
-        materiasQueNecesitaRegulares: [50],
+        materiasQueNecesitaRegulares: [19],
         materiasQueNecesitaAprobadas: [8, 16],
     },
     {
@@ -357,7 +357,7 @@ export const VIDatosMaterias = [
         nombre: "Arq. Soft",
         estado: 0,
         materiasQueActualiza: [],
-        materiasQueNecesitaRegulares: [20, 50],
+        materiasQueNecesitaRegulares: [20, 19],
         materiasQueNecesitaAprobadas: [13, 14],
     },//quinto año
     {
@@ -365,7 +365,7 @@ export const VIDatosMaterias = [
         nombre: "Blockchain",
         estado: 0,
         materiasQueActualiza: [],
-        materiasQueNecesitaRegulares: [26, 50],
+        materiasQueNecesitaRegulares: [26, 19],
         materiasQueNecesitaAprobadas: [14, 20],
     },
     {
@@ -406,7 +406,7 @@ export const VIDatosMaterias = [
         estado: 0,
         materiasQueActualiza: [],
         materiasQueNecesitaRegulares: [30],
-        materiasQueNecesitaAprobadas: [16, 50],
+        materiasQueNecesitaAprobadas: [16, 19],
     },
     {
         id: 64,
@@ -414,7 +414,7 @@ export const VIDatosMaterias = [
         estado: 0,
         materiasQueActualiza: [],
         materiasQueNecesitaRegulares: [27],
-        materiasQueNecesitaAprobadas: [50],
+        materiasQueNecesitaAprobadas: [19],
     },
     {
         id: 65,
@@ -422,14 +422,14 @@ export const VIDatosMaterias = [
         estado: 0,
         materiasQueActualiza: [],
         materiasQueNecesitaRegulares: [25],
-        materiasQueNecesitaAprobadas: [50, 20],
+        materiasQueNecesitaAprobadas: [19, 20],
     },
     {
         id: 66,
         nombre: "Seguridad Desarrollo SW",
         estado: 0,
         materiasQueActualiza: [],
-        materiasQueNecesitaRegulares: [26, 50],
+        materiasQueNecesitaRegulares: [26, 19],
         materiasQueNecesitaAprobadas: [20, 16],
     },
     {
@@ -437,15 +437,15 @@ export const VIDatosMaterias = [
         nombre: "Integracion Apps Ent. Web",
         estado: 0,
         materiasQueActualiza: [],
-        materiasQueNecesitaRegulares: [26, 50],
-        materiasQueNecesitaAprobadas: [20, 50],
+        materiasQueNecesitaRegulares: [26, 19],
+        materiasQueNecesitaAprobadas: [20, 19],
     },
     {
         id: 68,
         nombre: "Ing. SW de fuentes abiertas",
         estado: 0,
         materiasQueActualiza: [],
-        materiasQueNecesitaRegulares: [26, 50, 20],
+        materiasQueNecesitaRegulares: [26, 19, 20],
         materiasQueNecesitaAprobadas: [13, 14],
     },
 ];

@@ -50,6 +50,65 @@ export const MateriasDisplay = () => {
     else return true; // Esto significa que la materia se puede cursar.
   };
 
+  // Esta funcion devuelve un rango de numeros
+  function rango(start, stop)
+{
+     //Esta parte del código hace que los limites superior e inferior sean iguales a los del .slice
+    stop--;
+    var array = [];
+
+    var length = stop - start; 
+
+    for (var i = 0; i <= length; i++) { 
+        array[i] = start;
+        start++;
+    }
+
+    return array;
+}
+
+  const actualizarAnio = (arr) => {
+    // Si hay uno que este mas adelantado que el resto, entonces va a intentar
+    // igualar a todos. Si todos están al mismo nivel, entonces va a adelantar a todos
+    // No debe tomar en cuenta las materias con estado 0
+
+    // Conseguir el valor más alto para el estado.
+    let maxValor = 0;
+    for (let index = 0; index < arr.length; index++) {
+      const element = datosMateriasRef.current[arr[index]].estado;
+      if (element > maxValor){
+        maxValor = element;
+      }
+    }
+    // Si es 0 entonces no hacer nada
+    if (maxValor === 0) return;
+    
+    // Equiparar el valor más alto al resto de valores
+    let flagSonIguales = true;
+    for (let index = 0; index < arr.length; index++) {
+      const element = datosMateriasRef.current[arr[index]].estado;
+      if( element !== 0 && element < maxValor){
+        flagSonIguales = false;
+        break;
+      }
+    }
+
+    console.log(flagSonIguales)
+    if (flagSonIguales){
+      for (let index = 0; index < arr.length; index++) {
+        handleCambioEstado(datosMateriasRef.current[arr[index]].id);
+      }  
+    }
+    else{
+      for (let index = 0; index < arr.length; index++) {
+        const element = datosMateriasRef.current[arr[index]].estado;
+        if(element < maxValor)
+          handleCambioEstado(datosMateriasRef.current[arr[index]].id);
+      } 
+    }
+    
+  }
+
   const unlockMateria = (id) => {
     setDatosMaterias((prevState) => {
       return prevState.map((materia) => {
@@ -109,6 +168,7 @@ export const MateriasDisplay = () => {
   };
 
   const handleCambioEstado = (id) => {
+    console.log(id)
     if (datosMateriasRef.current.find((x) => x.id === id).estado !== 0) {
       console.log("se puede cursar");
       updateEstadoMateria(id);
@@ -154,7 +214,11 @@ export const MateriasDisplay = () => {
         </div>
         <div className="container-fluid mb-5">
           <hr />
-          <p className="year-header">Primero</p>
+          <p className="year-header">Primero 
+            <button  className="text-decoration-underline fw-bold btn" onClick={()=>{actualizarAnio(rango(0,9))}}>
+              {"("}Actualizar todo primero{")"}
+            </button>
+          </p>
           <div className="row">
             {datosMaterias.slice(0, 9).map((x, index) => (
               <button
@@ -170,7 +234,11 @@ export const MateriasDisplay = () => {
             ))}
           </div>
           <hr />
-          <p className="year-header">Segundo</p>
+          <p className="year-header">Segundo
+            <button  className="text-decoration-underline fw-bold btn" onClick={()=>{actualizarAnio(rango(9, 17))}}>
+              {"("}Actualizar todo segundo{")"}
+            </button>
+          </p>
           <div className="row">
             {datosMaterias.slice(9, 17).map((x, index) => (
               <button
@@ -186,7 +254,11 @@ export const MateriasDisplay = () => {
             ))}
           </div>
           <hr />
-          <p className="year-header">Tercero</p>
+          <p className="year-header">Tercero
+            <button  className="text-decoration-underline fw-bold btn" onClick={()=>{actualizarAnio(rango(17, 23))}}>
+              {"("}Actualizar todo tercero{")"}
+            </button>
+          </p>
           <div className="row">
             {datosMaterias.slice(17, 23).map((x, index) => (
               <button
@@ -218,7 +290,10 @@ export const MateriasDisplay = () => {
             ))}
           </div>
           <hr />
-          <p className="year-header">Cuarto</p>
+          <p className="year-header">Cuarto
+            <button  className="text-decoration-underline fw-bold btn" onClick={()=>{actualizarAnio(rango(23, 30))}}>
+              {"("}Actualizar todo cuarto{")"}
+            </button></p>
           <div className="row">
             {datosMaterias.slice(23, 30).map((x, index) => (
               <button
@@ -250,7 +325,11 @@ export const MateriasDisplay = () => {
             ))}
           </div>
           <hr />
-          <p className="year-header">Quinto</p>
+          <p className="year-header">Quinto
+            <button  className="text-decoration-underline fw-bold btn" onClick={()=>{actualizarAnio(rango(30, 36))}}>
+              {"("}Actualizar todo quinto{")"}
+            </button>
+          </p>
           <div className="row">
             {datosMaterias.slice(30, 36).map((x, index) => (
               <button
