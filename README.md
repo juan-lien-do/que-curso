@@ -7,7 +7,7 @@ Que curso nace de la idea de que usualmente los estudiantes de ingeniería en si
 
 **Cliente:** ReactJs, Bootstrap, HTML5, CSS3
 
-**Servidor:** No aplica
+**Servidor:** Node.js, Express.js
 
 ## Desarrolladores
 
