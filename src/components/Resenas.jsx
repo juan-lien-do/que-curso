@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/Resenas.css";
 import Resena from "./Resena";
+import ResenaVacia from "./ResenaVacia";
 
 export const Resenas = () => {
   return (
@@ -31,6 +32,17 @@ export const Resenas = () => {
           description="Está buena la sección de material porque tiene un montón de cosas para estudiar. "
           stars={5}
         />
+        <Resena
+          title="Agustin"
+          description="Muy buena página sirven banda los resúmenes."
+          stars={5}
+        />
+        <Resena
+          title="Santiago"
+          description="Simple pero MUY util realmente godiness"
+          stars={5}
+        />
+        <ResenaVacia></ResenaVacia>
       </div>
     </section>
   );
