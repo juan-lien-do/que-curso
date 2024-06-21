@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { VIDatosMaterias } from "../../constants/constants";
 import DownloadPDFButton from "./downloadPDFButton";
-import "./MateriasDisplay.css";
+import "../../styles/MateriasDisplay.css";
 
 export const MateriasDisplay = () => {
   const [datosMaterias, setDatosMaterias] = useState(() => {
